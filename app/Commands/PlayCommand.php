@@ -2,11 +2,10 @@
 
 namespace App\Commands;
 
-use App\Services\HandStrength;
-use Fust\Cards\Deck;
+
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
-use function Termwind\render;
+
 
 class PlayCommand extends Command
 {
@@ -15,14 +14,14 @@ class PlayCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'play:five-card';
+    protected $signature = 'play';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Start Playing the Game';
+    protected $description = 'Start Playing Poker';
 
     /**
      * Execute the console command.
@@ -31,19 +30,29 @@ class PlayCommand extends Command
      */
     public function handle()
     {
-        $this->info('Shuffling... Shuffling... Shuffling...');
+        $game = $this->choice(
+            'Which Variant do you want to play',
+            [
+                "1" => 'Five Card',
+                "2" => 'Badugi',
+            ]
+        );
 
-        $deck = new Deck();
-        $deck->shuffle();
-        $hand = $deck->drawHand(5);
+        // Check selected game and play the game
+        if ($game == 'Five Card'){
+            $this->comment('You are now playing the Five Card variant');
+            // use command to fetch the game
+            PlayCommand::call('play:five-card');
 
-        $handCards = '';
-        foreach ($hand as $card){
-            $handCards .= $card->value().$card->suitSign().' ';
+        }else {
+            $this->comment('Any other game has not been implemented the option is only there to showcase the possibility of expansion');
         }
 
-        $this->info(render('Your hand: ' .$handCards));
-        $this->info('You have: '. new HandStrength($hand));
+        // Check if player wants to retry, change game or exit
+        if ($this->confirm('Do you wish to retry/change game?', true)) {
+            PlayCommand::call('play');
+        }
+
     }
 
     /**

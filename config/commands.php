@@ -62,6 +62,11 @@ return [
         Illuminate\Console\Scheduling\ScheduleListCommand::class,
         Illuminate\Console\Scheduling\ScheduleFinishCommand::class,
         LaravelZero\Framework\Commands\StubPublishCommand::class,
+        LaravelZero\Framework\Commands\InstallCommand::class,
+        LaravelZero\Framework\Commands\BuildCommand::class,
+        LaravelZero\Framework\Commands\TestMakeCommand::class,
+        LaravelZero\Framework\Commands\MakeCommand::class,
+        LaravelZero\Framework\Commands\RenameCommand::class
     ],
 
     /*
@@ -76,7 +81,7 @@ return [
     */
 
     'remove' => [
-        // ..
+        //
     ],
 
 ];
