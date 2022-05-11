@@ -2,10 +2,8 @@
 
 namespace App\Commands;
 
-
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
-
 
 class PlayCommand extends Command
 {
@@ -52,7 +50,6 @@ class PlayCommand extends Command
         if ($this->confirm('Do you wish to retry/change game?', true)) {
             PlayCommand::call('play');
         }
-
     }
 
     /**

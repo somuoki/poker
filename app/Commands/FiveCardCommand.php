@@ -31,7 +31,6 @@ class FiveCardCommand extends Command
      */
     public function handle()
     {
-
         $this->info('Shuffling... Shuffling... Shuffling...');
 
 
