@@ -2,7 +2,7 @@ FROM php:8.0-cli-alpine
 COPY . /usr/src/poker
 WORKDIR /usr/src/poker
 #RUN apk add --no-cache bash
-RUN [ "php", "./poker" ]
+RUN [ "php", "poker" ]
 CMD php poker play
 
 
