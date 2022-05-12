@@ -35,6 +35,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
+        
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        run: vendor/bin/phpunit
 
       # Runs a set of commands using the runners shell
       - name: Build and push
