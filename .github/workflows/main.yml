@@ -46,6 +46,3 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/poker:latest
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/poker:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/poker:buildcache,mode=max
-          
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: vendor/bin/phpunit
