@@ -2,7 +2,8 @@
 
 namespace App\Commands;
 
-use App\Services\HandStrength;
+use App\Services\CardValues;
+use App\Services\FiveCardHandStrength;
 use Fust\Cards\Deck;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
@@ -25,14 +26,14 @@ class FiveCardCommand extends Command
     protected $description = 'Play the five card poker variant';
 
     /**
-     * Execute the console command.
+     * Execute the five card command.
      *
      * @return mixed
+     * @throws \Exception
      */
     public function handle()
     {
         $this->info('Shuffling... Shuffling... Shuffling...');
-
 
         // create a new deck of cards
         $deck = new Deck();
@@ -43,13 +44,15 @@ class FiveCardCommand extends Command
         // Give player five cards
         $hand = $deck->drawHand(5);
 
+        // Show player their cards
         $handCards = '';
         foreach ($hand as $card){
+            $card = new CardValues($card);
             $handCards .= $card->value().$card->suitSign().' ';
         }
 
         $this->info(render('Your hand: ' .$handCards));
-        $this->info('You have: '. new HandStrength($hand));
+        $this->info('You have: '. new FiveCardHandStrength($hand));
     }
 
     /**

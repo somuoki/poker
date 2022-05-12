@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-class HandStrength
+use App\Contracts\HandStrength;
+
+class FiveCardHandStrength implements HandStrength
 {
     public array $cards;
 
@@ -59,12 +61,6 @@ class HandStrength
      */
     public function sortBySuit(): array
     {
-//        echo $this->cards[0]->suit()->value();
-//        var_dump($this->cards);
-//        $keys = array_column($this->cards, 'suit');
-//        array_multisort($keys, SORT_ASC, $this->cards);
-//        return $this->cards;
-
         usort($this->cards, fn($a, $b) => $a->suit()->value() <=> $b->suit()->value() );
         return $this->cards;
     }
@@ -76,13 +72,11 @@ class HandStrength
      */
     public function sortByRank(): array
     {
-//        echo $this->cards->faceValue;
-//        $keys = array_column($this->cards, 'faceValue');
-//        array_multisort($keys, SORT_ASC, $this->cards);
-//        return $this->cards;
+        foreach ($this->cards as $card){
+            $card->value = $card->value() == 100 ? 1 : $card->value();
+        }
         usort($this->cards, fn($a, $b) => $a->value() <=> $b->value());
         return $this->cards;
-
     }
 
     /**
@@ -223,10 +217,6 @@ class HandStrength
     {
         return($this->isFlush() && $this->isStraight());
     }
-
-//    public function isHighCards()
-//    {
-//    }
 
     public function __toString(): string
     {
