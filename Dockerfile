@@ -16,7 +16,7 @@ RUN composer2 install \
     --no-scripts \
     --prefer-dist
 
-#RUN apk add --no-cache bash
+RUN php poker test
 RUN [ "php", "./poker" ]
 CMD php poker play
 
