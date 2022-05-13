@@ -16,7 +16,7 @@ class FiveCardHandStrength implements HandStrength
     public function checkHand(): string
     {
         if (count($this->cards) != 5){
-            return 'No Good Hand';
+            return "You've got the wrong number of cards";
         }
 
         if ($this->isStraightFlush()){

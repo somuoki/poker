@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Fust\Cards\Card;
 use Fust\Cards\Contracts\CardProvider;
 use Fust\Cards\Deck;
 use Mockery as m;
@@ -11,7 +12,7 @@ use UnderflowException;
 class DeckTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Check if deck has 52 cards.
      *
      * @return void
      */
@@ -21,6 +22,15 @@ class DeckTest extends TestCase
         $deck = new Deck;
 
         $this->assertEquals(52, $deck->count());
+    }
+
+    public function testAllCardsInDeckAreDifferent()
+    {
+        $deck = new Deck();
+        $hand = $deck->drawHand(52);
+        for ($i=0; $i < 51; $i++){
+            $this->assertNotEquals($hand[$i], $hand[$i + 1]);
+        }
     }
 
     public function testDraw()
