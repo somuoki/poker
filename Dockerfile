@@ -16,7 +16,7 @@ RUN composer2 install \
     --no-scripts \
     --prefer-dist
 
-RUN php poker test
+RUN ./vendor/bin/pest
 RUN [ "php", "./poker" ]
 CMD php poker play
 
