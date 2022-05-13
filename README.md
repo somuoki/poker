@@ -1,5 +1,5 @@
 
-<h2> <center>Five - Card Poker Simulation </center></h2>
+<h2> <div style="text-align: center;">Five - Card Poker Simulation </div></h2>
 
 This Application is a cli simulation of the five-card poker variant. 
 The application uses php(Laravel Zero).
