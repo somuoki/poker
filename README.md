@@ -1,36 +1,69 @@
-<p align="center">
-    <img title="Laravel Zero" height="100" src="https://raw.githubusercontent.com/laravel-zero/docs/master/images/logo/laravel-zero-readme.png" />
-</p>
 
-<p align="center">
-  <a href="https://github.com/laravel-zero/framework/actions"><img src="https://img.shields.io/github/workflow/status/laravel-zero/framework/Tests.svg" alt="Build Status"></img></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/dt/laravel-zero/framework.svg" alt="Total Downloads"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/v/laravel-zero/framework.svg?label=stable" alt="Latest Stable Version"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/l/laravel-zero/framework.svg" alt="License"></a>
-</p>
+<h2> <center>Five - Card Poker Simulation </center></h2>
 
-<h4> <center>This is a <bold>community project</bold> and not an official Laravel one </center></h4>
-
-Laravel Zero was created by [Nuno Maduro](https://github.com/nunomaduro) and [Owen Voke](https://github.com/owenvoke), and is a micro-framework that provides an elegant starting point for your console application. It is an **unofficial** and customized version of Laravel optimized for building command-line applications.
-
-- Built on top of the [Laravel](https://laravel.com) components.
-- Optional installation of Laravel [Eloquent](https://laravel-zero.com/docs/database/), Laravel [Logging](https://laravel-zero.com/docs/logging/) and many others.
-- Supports interactive [menus](https://laravel-zero.com/docs/build-interactive-menus/) and [desktop notifications](https://laravel-zero.com/docs/send-desktop-notifications/) on Linux, Windows & MacOS.
-- Ships with a [Scheduler](https://laravel-zero.com/docs/task-scheduling/) and  a [Standalone Compiler](https://laravel-zero.com/docs/build-a-standalone-application/).
-- Integration with [Collision](https://github.com/nunomaduro/collision) - Beautiful error reporting
+This Application is a cli simulation of the five-card poker variant. 
+The application uses php(Laravel Zero).
 
 ------
 
 ## Documentation
 
-For full documentation, visit [laravel-zero.com](https://laravel-zero.com/).
+### Installation
+Clone or download the repository
+```
+# git clone https://github.com/somuoki/poker.git
+# cd poker
+# Composer install
+```
 
-## Support the development
-**Do you like this project? Support it by donating**
+### Running the project
+There are two cmd files on the root of the project
 
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
+- localpoker.cmd
+- dockerpoker.cmd
 
-## License
+This file allows you to run the application directly either in docker or locally on your cmd
+The other option is to just open a terminal from the root of the project
 
-Laravel Zero is an open-source software licensed under the MIT license.
+### Usage
+The commands for the game are
+
+```
+# php poker
+
+  Poker  1
+
+  USAGE: poker <command> [options] [arguments]
+
+  play           Start Playing Poker
+
+  play:badugi    Play the Badugi Poker Variant
+  play:five-card Play the five card poker variant
+```
+
+The `php poker` commands lists game play commands
+
+The `play` command gives you a list of available games in which you choose the one to play
+```
+# php poker play
+
+Which Variant do you want to play:
+  [1] Five Card
+  [2] Badugi
+ > 1
+```
+
+The `play:badugi` and `play:five-card` commands take you directly to the game you wish to play
+
+```
+# php poker play:five-card
+Shuffling... Shuffling... Shuffling...
+
+Your hand: J♠ 5♠ A♠ 2♥ 6♦
+
+You have: High Cards
+```
+
+**_NOTE:_** Currently the badugi game is not implemented you are welcome to try to implement it
+
+
